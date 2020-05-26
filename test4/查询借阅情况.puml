@@ -1,0 +1,15 @@
+@startuml
+actor ": 读者" as 读者
+participant ": 借书记录" as 借书记录
+participant ": 逾期记录" as 逾期记录
+skinparam sequenceParticipant underline
+读者->读者:验证读者信息
+读者->借书记录:取借书记录
+activate 借书记录
+借书记录->逾期记录:取逾期记录
+activate 逾期记录
+逾期记录-->借书记录:返回逾期记录
+deactivate 逾期记录
+借书记录-->读者:返回借书、归还、逾期记录
+deactivate 借书记录
+@enduml

@@ -1,0 +1,33 @@
+@startuml
+actor ": 读者" as 读者
+participant ": 预定记录" as 预定记录
+participant ": 馆藏目录" as 馆藏目录
+participant ": 馆藏书籍资源" as 馆藏书籍资源
+skinparam sequenceParticipant underline
+activate 读者
+读者->读者:验证读者信息
+loop
+读者->馆藏目录:取馆藏目录
+activate 馆藏目录
+馆藏目录->馆藏书籍资源:查询书目
+activate 馆藏书籍资源
+deactivate 馆藏书籍资源
+deactivate 馆藏目录
+读者->预定记录:查询可预定数目
+activate 预定记录
+预定记录-->读者:可预定数目大于0
+opt
+预定记录-->读者:可预定数目为0
+end
+读者->预定记录:查询已预定书籍信息
+预定记录-->读者:未预定当前需要预定图书
+opt
+预定记录-->读者:已预定当前需要预定图书
+end
+读者->预定记录:登记预定记录
+deactivate 预定记录
+end
+读者->预定记录:打印预定清单
+activate 预定记录
+deactivate 预定记录
+@enduml

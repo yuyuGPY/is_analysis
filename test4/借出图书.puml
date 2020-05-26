@@ -1,0 +1,42 @@
+@startuml
+actor ": 图书管理员" as 图书管理员
+participant ": 读者" as 读者
+participant ": 馆藏目录" as 馆藏目录
+participant ": 馆藏书籍资源" as 馆藏书籍资源
+participant ": 借书记录" as 借书记录
+skinparam sequenceParticipant underline
+图书管理员 -> 读者:验证读者
+activate 图书管理员
+loop
+activate 读者
+deactivate 读者
+图书管理员 -> 读者:取读者限额
+activate 读者
+opt 超出限额
+读者-->图书管理员:取消借书操作
+deactivate 读者
+end
+图书管理员 -> 馆藏目录:获取馆藏目录
+activate 馆藏目录
+馆藏目录 -> 馆藏书籍资源:查找书籍资源
+activate 馆藏书籍资源
+deactivate 馆藏书籍资源
+deactivate 馆藏目录
+图书管理员 -> 借书记录:创建借书记录
+activate 借书记录
+deactivate 借书记录
+图书管理员 -> 馆藏目录:借出资源
+activate 馆藏目录
+馆藏目录 -> 馆藏书籍资源:减少可借数量
+activate 馆藏书籍资源
+deactivate 馆藏书籍资源
+deactivate 馆藏目录
+图书管理员 -> 读者:减少可借限额
+activate 读者
+deactivate 读者
+end
+图书管理员 -> 借书记录:打印借书清单
+activate 借书记录
+deactivate 借书记录
+deactivate 图书管理员
+@enduml

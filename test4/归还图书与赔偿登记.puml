@@ -1,0 +1,54 @@
+@startuml
+actor ": 图书管理员" as 图书管理员
+participant ": 读者" as 读者
+participant ": 馆藏目录" as 馆藏目录
+participant ": 馆藏书籍资源" as 馆藏书籍资源
+participant ": 借书记录" as 借书记录
+participant ": 逾期记录" as 逾期记录
+participant ": 罚款细则" as 罚款细则
+skinparam sequenceParticipant underline
+图书管理员 -> 读者:验证读者信息
+activate 读者
+deactivate 读者
+loop
+图书管理员 -> 馆藏目录:读取馆藏目录
+activate 图书管理员
+activate 馆藏目录
+馆藏目录 -> 馆藏书籍资源:获取书籍资源
+activate 馆藏书籍资源
+deactivate 馆藏书籍资源
+deactivate 馆藏目录
+图书管理员 -> 借书记录:取借书记录
+activate 借书记录
+借书记录 --> 图书管理员:借书记录
+deactivate 借书记录
+图书管理员 -> 馆藏目录:归还资源
+activate 馆藏目录
+馆藏目录 -> 馆藏书籍资源:增加可借数量
+activate 馆藏书籍资源
+deactivate 馆藏书籍资源
+deactivate 馆藏目录
+图书管理员 -> 借书记录:登记还书日期
+activate 借书记录
+deactivate 借书记录
+opt 逾期
+图书管理员 -> 逾期记录:登记逾期记录
+activate 逾期记录
+逾期记录->罚款细则:匹配罚款细则
+activate 罚款细则
+deactivate 罚款细则
+逾期记录 --> 图书管理员:逾期信息
+deactivate 逾期记录
+end
+图书管理员->读者:增加可借限额
+activate 读者
+deactivate 读者
+end
+图书管理员 -> 借书记录:打印还书清单
+activate 借书记录
+deactivate 借书记录
+图书管理员 -> 逾期记录:打印逾期清单
+activate 逾期记录
+deactivate 逾期记录
+deactivate 图书管理员
+@enduml
