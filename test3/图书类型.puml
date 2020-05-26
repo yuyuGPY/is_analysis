@@ -1,0 +1,8 @@
+@startuml
+
+object 图书类型{
+编号: 1
+名称: 计算机
+}
+
+@enduml
