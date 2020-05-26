@@ -8,10 +8,10 @@
     <th>照片</th>
   </tr>
   <tr>
-    <td>软工4班</td>
-    <td>徐元通</td>
-    <td>201710414423</td>
-    <td><img src="./images/photo.jpg"/></td>
+    <td>软工1班</td>
+    <td>王博</td>
+    <td>201710414118</td>
+    <td><img src="./images/IMG_20200512_202122.jpg"/></td>
   </tr>
 </table>
 ## 1.图书管理系统的类图
