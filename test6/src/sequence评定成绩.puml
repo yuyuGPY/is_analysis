@@ -1,0 +1,12 @@
+@startuml
+title 基于GitHub的实验管理平台--评定成绩用例的顺序图
+actor teachers
+
+teachers -> courses:进入课程
+courses -> students:显示学生列表
+students -> cgrades:进入学生评分列表
+cgrades -> tests:进入指定实验
+tests -> itemofscore:根据每个评分项进行评分
+itemofscore --> teachers:每个实验的信息、成绩和评语
+
+@enduml

@@ -1,0 +1,50 @@
+@startuml
+title 基于GitHub的实验管理平台--学生列表用例的顺序图
+actor teacher
+teacher -> courses: 查看任课的课程
+courses -> students: 该课程所有学生列表
+students -> grades:查看课程成绩
+grades -> tests:汇总每个实验成绩
+tests -> itemofscore:汇总每个评分项成绩
+itemofscore --> teacher:每个学生的基本信息、及课程的成绩
+
+/'
+skinparam sequenceParticipant underline
+actor ": Librarian"
+activate ": Librarian"
+
+": Librarian" ->": Reader":verifyReaders()
+activate ": Reader"
+deactivate ": Reader"
+": Librarian" ->": Reader":getInformation()
+
+activate ": Reader"
+deactivate ": Reader"
+": Librarian" ->": Resource":getResource()
+activate ": Resource"
+": Resource" -> ": Collection":queryResKinds()
+activate ": Collection"
+deactivate ": Collection"
+deactivate ": Resource"
+
+": Librarian" ->": BorrowRecords":creaLendRecords()
+activate ": BorrowRecords"
+deactivate ": BorrowRecords"
+": Librarian" ->": Resource":lendResource()
+activate ": Resource"
+
+": Resource" ->": Collection":reduceBorrNum()
+activate ": Collection"
+deactivate ": Collection"
+deactivate ": Resource"
+": Librarian" ->": Reader":reduceMaxLend()
+activate ": Reader"
+deactivate ": Reader"
+
+": Librarian"->": BorrowRecords":printlendList()
+activate ": BorrowRecords"
+deactivate ": BorrowRecords"
+deactivate ": Librarian"
+'/
+
+@enduml

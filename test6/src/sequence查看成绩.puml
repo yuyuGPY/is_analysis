@@ -1,0 +1,10 @@
+@startuml
+title 基于GitHub的实验管理平台--查看成绩用例的顺序图
+actor students
+students -> cgrades: 查看课程总成绩
+cgrades -> exgrades: 查看实验总成绩
+exgrades -> tests:查询实验信息
+tests -> itemofscore: 查看实验成绩组成以及老师评语
+
+itemofscore --> students:每个实验的信息、成绩组成和每个部分的评语
+@enduml
