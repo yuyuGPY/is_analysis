@@ -1,0 +1,25 @@
+@startuml
+start
+:系统显示输入面板;
+:输入书籍名字、编码、
+存放地址、数量、存放时间;
+if (没有输入名字？) then (yes)
+  :提示没有输入名字;
+    stop
+elseif (没有输入存放地址？) then (yes)
+  :提示没有输入存放地址;
+  stop
+elseif (没有输入数量？) then (yes)
+  :提示没有输入数量;
+    stop
+else (no)
+  :系统确认输入信息、
+  保存并返回保存结果;
+endif
+if (参与者确认保存结果？) then (yes)
+  :图书添加成功;
+else (no)
+  :取消添加;
+endif
+stop
+@enduml

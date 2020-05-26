@@ -1,0 +1,32 @@
+@startuml
+start
+:系统显示归还界面并提
+示用户操作自动还书机;
+:按照指导完成操作;
+if (系统没有获得书籍信息？) then (yes)
+  :提示请按照操作提示，规范使用还书机;
+    stop
+elseif (系统连续三次获取图书失败？) then (yes)
+  :提示没有输入存放地址;
+  if (系统提示还书出现错
+  误是否呼叫工作人员？) then (yes)
+  :已呼叫工作人员，请稍等;
+  stop
+    else (no)
+    stop
+  endif
+elseif (参与者存在有超时的书籍？) then (yes)
+  :提示用户请先归还超时书
+  籍并显示所有已经超时的书籍;
+    stop
+else (no)
+  :系统获得书籍信息、
+  参与者信息并提示用户;
+endif
+if (参与者确认？) then (yes)
+  :还书成功;
+else (no)
+  :取消还书;
+endif
+stop
+@enduml

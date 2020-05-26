@@ -1,0 +1,25 @@
+@startuml
+start
+:选择一本书;
+:系统验证身份;
+:锁定书籍;
+if (所选书籍剩余量为0？) then (yes)
+  :输出提示：书籍没有库存了;
+    stop
+elseif (达最大借书量？) then (yes)
+  :提示已经到达最大借书量;
+  stop
+elseif (存在超过归还期限的书籍？) then (yes)
+  :提示请先归还超时书籍;
+    stop
+else (no)
+  :系统确认;
+endif
+:请求参与者确认;
+if (用户确认？) then (yes)
+  :借阅成功;
+else (no)
+  :取消借阅;
+endif
+stop
+@enduml

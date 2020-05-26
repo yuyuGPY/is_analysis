@@ -1,0 +1,6 @@
+@startuml
+start
+:参与者选择退出;
+:系统确认退出;
+stop
+@enduml

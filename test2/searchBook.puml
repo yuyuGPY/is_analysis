@@ -1,0 +1,16 @@
+@startuml
+start
+:系统显示图书搜索框;
+if (选择名称查询？) then (yes)
+  :系统使用名称查询;
+else (no)
+  :系统使用编码查询;
+endif
+:查询;
+if (查询到内容？) then (yes)
+  :系统返回查找的书籍并显示，存放地址，剩余数量;
+else (no)
+  :系统提示没有找到任何书籍;
+endif
+stop
+@enduml

@@ -1,0 +1,18 @@
+@startuml
+start
+:系统显示登陆界面;
+:参与者输入用户名，密码，验证码;
+if (用户名输入错误？) then (yes)
+  :系统提示用户或密码验证失败请重试;
+    stop
+elseif (密码输入错误？) then (yes)
+  :系统提示用户或密码验证失败请重试;
+  stop
+elseif (验证码错误？) then (yes)
+  :系统提示用户或密码验证失败请重试;
+    stop
+else (no)
+  :系统验证信息成功，进入系统;
+endif
+stop
+@enduml

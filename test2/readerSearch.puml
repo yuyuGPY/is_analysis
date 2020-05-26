@@ -1,0 +1,12 @@
+@startuml
+start
+:系统显示查询面板;
+:参与者输入查询的用户名字;
+if (查询到内容？) then (yes)
+  :显示用户的名字，身份，
+  已借书籍，超时书籍;
+else (no)
+  :没有查到这个用户;
+endif
+stop
+@enduml
